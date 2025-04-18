@@ -29,3 +29,6 @@ build/
 *.tmp
 *.temp
 *.bak
+
+/partA/inaturalist_12K
+/partA/wandb
