@@ -168,8 +168,7 @@ test_dataset = datasets.ImageFolder("inaturalist_12K/val", transform=test_transf
 test_loader = DataLoader(test_dataset, batch_size=config["batch_size"], shuffle=False, num_workers=4)
 class_names = test_dataset.classes
 
-ckpt_path = "/content/DA6401_Assignment2/s5ngriy8/checkpoints/epoch=9-step=1250.ckpt"  # Replace with actual path
-
+ckpt_path = "epoch=9-step=1250.ckpt" 
 model = CNN.load_from_checkpoint(ckpt_path, config=config)
 model.eval()
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
@@ -207,5 +206,5 @@ for i, idx in enumerate(random.sample(range(len(images)), 5)):
     axs[i].imshow(img)
     axs[i].axis("off")
     axs[i].set_title(f"Pred: {class_names[preds[idx]]}\nTrue: {class_names[labels[idx]]}")
-plt.show()
+plt.savefig("sample_predictions.png")
 wandb.log({"Sample Predictions": wandb.Image(fig)})
