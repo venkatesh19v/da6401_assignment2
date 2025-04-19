@@ -2,11 +2,10 @@
 
 This project focuses on developing and fine-tuning Convolutional Neural Network (CNN) models for image classification tasks using the iNaturalist 12K dataset. It encompasses both training models from scratch and fine-tuning pre-trained models to classify images into 10 distinct animal categories.
 
-**W&B Report**: [View Report](https://api.wandb.ai/links/venkatesh19v-indian-institute-of-technology-madras/c7kqplz1)
+- **W&B Report**: [View Report](https://api.wandb.ai/links/venkatesh19v-indian-institute-of-technology-madras/c7kqplz1)
+- **Github PartA**: [View Git](https://github.com/venkatesh19v/da6401_assignment2/tree/main/partA)
+- **Github PartB**: [View Git](https://github.com/venkatesh19v/da6401_assignment2/tree/main/partB)
 
-**Github PartA**: [View Git](https://github.com/venkatesh19v/da6401_assignment2/tree/main/partA)
-
-**Github PartB**: [View Git](https://github.com/venkatesh19v/da6401_assignment2/tree/main/partB)
 ---
 
 ## Project Structure
