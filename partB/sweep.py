@@ -81,7 +81,7 @@ for model_name in MODEL_LIST:
                 devices="auto",
             )
         else:
-            print(f"⚠️ Warning: No trainable parameters in {model_name} with strategy {strategy}. Running on CPU.")
+            print(f"Warning: No trainable parameters in {model_name} with strategy {strategy}. Running on CPU.")
             trainer = Trainer(
                 max_epochs=EPOCHS,
                 logger=wandb_logger,
