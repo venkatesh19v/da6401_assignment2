@@ -34,3 +34,4 @@ build/
 /partA/wandb
 /partB/wandb
 /inaturalist_12K
+/partA/lightning_logs
