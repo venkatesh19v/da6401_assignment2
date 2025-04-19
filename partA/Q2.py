@@ -16,7 +16,7 @@ def prepare_data_loaders(batch_size, img_size):
         transforms.ToTensor(),
     ])
 
-    full = datasets.ImageFolder("inaturalist_12K/train", transform=tfm)
+    full = datasets.ImageFolder("/home/venkatesh/Documents/IDL/Assignment_2/As2/da6401_assignment2/inaturalist_12K/train", transform=tfm)
     labels = [label for _, label in full.samples]
 
     sss = StratifiedShuffleSplit(n_splits=1, test_size=0.2, random_state=42)

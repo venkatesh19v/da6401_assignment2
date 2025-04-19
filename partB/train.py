@@ -24,12 +24,12 @@ transform = transforms.Compose([
 ])
 
 # Load and split dataset
-full_train_ds = ImageFolder("/partA/inaturalist_12K/train", transform=transform)
+full_train_ds = ImageFolder("/home/venkatesh/Documents/IDL/Assignment_2/As2/da6401_assignment2/inaturalist_12K/train", transform=transform)
 train_len = int(0.8 * len(full_train_ds))
 val_len = len(full_train_ds) - train_len
 generator = torch.Generator().manual_seed(42)
 train_ds, val_ds = random_split(full_train_ds, [train_len, val_len], generator)
-test_ds = ImageFolder("/partA/inaturalist_12K/val", transform=transform)
+test_ds = ImageFolder("/home/venkatesh/Documents/IDL/Assignment_2/As2/da6401_assignment2/inaturalist_12K/val", transform=transform)
 class_names = test_ds.classes
 
 train_loader = DataLoader(train_ds, batch_size=BATCH_SIZE, shuffle=True, num_workers=4)

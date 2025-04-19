@@ -3,7 +3,7 @@ from torchvision import transforms
 from torchvision.datasets import ImageFolder
 import matplotlib.pyplot as plt
 import numpy as np
-from FineTune import FineTune 
+from FineTuneModel import FineTune 
 import random
 from torchvision.utils import make_grid
 from torch.utils.data import DataLoader, Subset
@@ -24,7 +24,7 @@ transform = transforms.Compose([
                          [0.229, 0.224, 0.225])
 ])
 
-test_ds = ImageFolder("/inaturalist_12K/val", transform=transform)
+test_ds = ImageFolder("/home/venkatesh/Documents/IDL/Assignment_2/As2/da6401_assignment2/inaturalist_12K/val", transform=transform)
 test_loader = DataLoader(test_ds, batch_size=32, shuffle=False, num_workers=4)
 class_names = test_ds.classes
 

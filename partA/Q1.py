@@ -28,7 +28,7 @@ def train_cnn(config):
             transforms.RandomRotation(15),
             transforms.ToTensor(),
         ])
-        full = datasets.ImageFolder("inaturalist_12K/train", transform=tfm)
+        full = datasets.ImageFolder("/home/venkatesh/Documents/IDL/Assignment_2/As2/da6401_assignment2/inaturalist_12K/train", transform=tfm)
         labels = [y for _, y in full.samples]
         sss = StratifiedShuffleSplit(n_splits=1, test_size=0.2, random_state=42)
         train_idx, val_idx = next(sss.split(full.samples, labels))

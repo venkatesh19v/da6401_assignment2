@@ -37,8 +37,8 @@ transform = transforms.Compose([
                          [0.229, 0.224, 0.225])
 ])
 
-full_train = datasets.ImageFolder(root="inaturalist_12K/train", transform=transform)
-test_dataset = datasets.ImageFolder(root="inaturalist_12K/val", transform=transform)
+full_train = datasets.ImageFolder(root="/home/venkatesh/Documents/IDL/Assignment_2/As2/da6401_assignment2/inaturalist_12K/train", transform=transform)
+test_dataset = datasets.ImageFolder(root="/home/venkatesh/Documents/IDL/Assignment_2/As2/da6401_assignment2/inaturalist_12K/val", transform=transform)
 
 # Stratified 80/20 split
 targets = [s[1] for s in full_train.samples]
