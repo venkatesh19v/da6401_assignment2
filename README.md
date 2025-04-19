@@ -32,14 +32,37 @@ This project focuses on developing and fine-tuning Convolutional Neural Network 
 - **partB/**: Includes scripts for fine-tuning pre-trained models using various strategies.  
 - **README.md**: Provides an overview and setup instructions.
 
+## Part A: Training from scratch
+- 5 Convolution Layers: Each followed by ReLU activation and max-pooling.
+- 1 Dense Layer: Fully connected layer before the output layer.
+- Output Layer: 10 neurons (corresponding to the 10 classes in the iNaturalist dataset).
 
-**Best Sweep Config for Scratch**
+**Sweep Config**
+```json
+    "method": "bayes",
+    "metric": {"name": "val_acc", "goal": "maximize"},
+    "parameters": {
+        "num_filters":    {"values": [32, 64, 128]},
+        "kernel_size":    {"values": [3, 5]},
+        "activation":     {"values": ["relu", "gelu", "silu", "mish"]},
+        "filter_scheme":  {"values": ["same", "double", "half"]},
+        "batch_norm":     {"values": ["True", "False"]},
+        "dropout_prob":   {"values": [0.0, 0.2, 0.3]},
+        "dense_neurons":  {"values": [64, 128, 256]},
+        "lr":             {"min": 1e-4, "max": 1e-2},
+        "batch_size":     {"values": [32]},
+        "img_size":       {"value": 224},
+        "num_classes":    {"value": 10}
+    }
+```
+
+**Best Sweep Config for Scratch:**
 ```json
 "num_filters": 128,
 "kernel_size": 3,
 "activation": "relu",
 "filter_scheme": "half",
-"batch_norm": True,
+"batch_norm": "True",
 "dropout_prob": 0,
 "dense_neurons": 128,
 "lr": 1.4e-3,
@@ -47,13 +70,25 @@ This project focuses on developing and fine-tuning Convolutional Neural Network 
 "img_size": 224,
 "num_classes": 10
 ```
+**Accuracy:**
+```
+Test Accuracy: 36.00%
+Train Accuracy: 47.5%
+Validation Accuracy: 34.7%
+```
 
+**Trained with Best Sweep Config for Scratch:**
 ```
 Test Accuracy: 33.33%
 Train Accuracy: 45.1%
 Validation Accuracy: 38.1%
 ```
 ---
+## Part B: Fine-tuning a pre-trained model
+
+Rather than training from scratch, we leverage ImageNet‑pretrained networks from torchvision —which already
+capture rich visual features—to accelerate and improve our iNaturalist classification. We compare four architectures
+and three “freeze” strategies to find the best fine‑tuning recipe.
 
 ## Models Explored
 
@@ -128,7 +163,7 @@ Val Acc   : 84.10%
    Ensure the dataset is downloaded and placed in the following structure:
 
    ```
-   partA/inaturalist_12K/
+   inaturalist_12K/
    ├── train/
    └── val/
    ```
