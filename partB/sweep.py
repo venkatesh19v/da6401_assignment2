@@ -10,11 +10,11 @@ from pytorch_lightning.callbacks import ModelCheckpoint
 from FineTuneModel import FineTune
 
 # Sweep configs
-MODEL_LIST = ["resnet18", "vgg16", "efficientnet_v2_s", "vit_b_16"]
+MODEL_LIST = ["resnet50",  "alexnet", "resnet18", "vgg16", "efficientnet_v2_s", "vit_b_16"]
 STRATEGIES = ["freeze_all", "freeze_until_layer4", "unfreeze_all"]
 BATCH_SIZE = 32
 LR = 1e-3
-EPOCHS = 3
+EPOCHS = 10
 
 # Dataset transforms
 transform = transforms.Compose([
@@ -24,12 +24,12 @@ transform = transforms.Compose([
 ])
 
 # Load and split dataset
-full_train_ds = ImageFolder("/partA/inaturalist_12K/train", transform=transform)
+full_train_ds = ImageFolder("/inaturalist_12K/train", transform=transform)
 train_len = int(0.8 * len(full_train_ds))
 val_len = len(full_train_ds) - train_len
 generator = torch.Generator().manual_seed(42)
 train_ds, val_ds = random_split(full_train_ds, [train_len, val_len], generator)
-test_ds = ImageFolder("/partA/inaturalist_12K/val", transform=transform)
+test_ds = ImageFolder("/inaturalist_12K/val", transform=transform)
 class_names = test_ds.classes
 
 train_loader = DataLoader(train_ds, batch_size=BATCH_SIZE, shuffle=True, num_workers=4)
@@ -43,7 +43,7 @@ def has_trainable_params(model):
 for model_name in MODEL_LIST:
     for strategy in STRATEGIES:
         run = wandb.init(
-            project="inat-finetune-sweep",
+            project="DA6401_Assignment2",
             name=f"{model_name}_{strategy}",
             config={
                 "model": model_name,
@@ -69,7 +69,7 @@ for model_name in MODEL_LIST:
             filename=f"{model_name}_{strategy}"
         )
 
-        wandb_logger = WandbLogger(project="inat-finetune-sweep", log_model=True)
+        wandb_logger = WandbLogger(project="DA6401_Assignment2", log_model=True)
      
         # After initializing `model = FineTune(...)`
         if has_trainable_params(model):
