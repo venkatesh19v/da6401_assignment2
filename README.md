@@ -5,6 +5,7 @@ This project focuses on developing and fine-tuning Convolutional Neural Network 
 **W&B Report**: [View Report](https://api.wandb.ai/links/venkatesh19v-indian-institute-of-technology-madras/c7kqplz1)
 
 **Github PartA**: [View Git](https://github.com/venkatesh19v/da6401_assignment2/tree/main/partA)
+
 **Github PartB**: [View Git](https://github.com/venkatesh19v/da6401_assignment2/tree/main/partB)
 ---
 
