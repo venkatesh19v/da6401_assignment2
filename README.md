@@ -4,6 +4,8 @@ This project focuses on developing and fine-tuning Convolutional Neural Network 
 
 **W&B Report**: [View Report](https://api.wandb.ai/links/venkatesh19v-indian-institute-of-technology-madras/c7kqplz1)
 
+**Github PartA**: [View Git](https://github.com/venkatesh19v/da6401_assignment2/tree/main/partA)
+**Github PartB**: [View Git](https://github.com/venkatesh19v/da6401_assignment2/tree/main/partB)
 ---
 
 ## Project Structure
@@ -28,9 +30,29 @@ This project focuses on developing and fine-tuning Convolutional Neural Network 
 
 - **partA/**: Contains code for training CNN models from scratch.  
 - **partB/**: Includes scripts for fine-tuning pre-trained models using various strategies.  
-- **requirements.txt**: Lists all Python dependencies required to run the project.  
 - **README.md**: Provides an overview and setup instructions.
 
+
+**Best Sweep Config for Scratch**
+```json
+"num_filters": 128,
+"kernel_size": 3,
+"activation": "relu",
+"filter_scheme": "half",
+"batch_norm": True,
+"dropout_prob": 0,
+"dense_neurons": 128,
+"lr": 1.4e-3,
+"batch_size": 32,
+"img_size": 224,
+"num_classes": 10
+```
+
+```
+Test Accuracy: 33.33%
+Train Accuracy: 45.1%
+Validation Accuracy: 38.1%
+```
 ---
 
 ## Models Explored
@@ -77,9 +99,7 @@ Strategy  : Freeze Until Layer4
 Test Acc  : 84.50%
 Val Acc   : 84.10%
 ```
-
 ---
-
 
 ## Setup Instructions
 
@@ -144,5 +164,14 @@ Val Acc   : 84.10%
 
 ### Model trained from Finetuned model:
 ![Prediction Grid](/partB/random_test_predictions_grid.png)
+
+---
+
+## Conclusion
+Results after the Fine-tuning is drastically improved it is evident from the prediction uploaded. ref. Fig. 1 and Fig. 2 Fine-tuning a pre-trained ViT model using a partial freezing strategy leads to:
+ - Higher accuracy
+ - Faster convergence
+ - Better generalization compared to training a small CNN from scratch.
+With a thoughtful strategy like freeze_until_layer4, it’s possible to balance performance and computational cost effectively.
 
 ---
