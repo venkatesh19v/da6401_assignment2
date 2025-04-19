@@ -146,7 +146,7 @@ Val Acc   : 84.10%
    - **Fine-Tuning Pre-Trained Models**:
 
      ```bash
-     python partB/sweep.py
+     python partB/train.py
      ```
 
 ---
