@@ -80,13 +80,12 @@ test_acc : 33.33
 train_acc : 45.1
 val_acc : 38.1
 ```
-## Prediction on the Test dataset:
-### Model trained on best parameter from scratch:
-![Prediction Grid](/partA/prediction_grid.png)
-
 ```bash
 python Q4.py
 ```
+## Prediction on the Test dataset:
+### Model trained on best parameter from scratch:
+![Prediction Grid](/partA/prediction_grid.png)
 ---
 
 - `epoch=9-step=1250.ckpt`: Automatically saved model checkpoint at step 1250 of epoch 9.
